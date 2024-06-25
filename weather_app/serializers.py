@@ -1,5 +1,5 @@
-from djangorestframework import serializers
-from models import Record
+from rest_framework import serializers
+from weather_app.models import Record
 
 class RecordSerializer(serializers.ModelSerializer):
     class Meta:

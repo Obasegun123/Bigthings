@@ -1,5 +1,5 @@
-from rest_api.models import Record
-from rest_api.serializers import RecordSerializer
+from weather_app.models import Record
+from weather_app.serializers import RecordSerializer
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
