@@ -5,11 +5,15 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from rest_framework.permissions import IsAuthenticated
+
 
 """
     List all weather details, or create a new weather info
 """
 class WeatherList(APIView):
+    
+    permission_classes = (IsAuthenticated,) 
     
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
