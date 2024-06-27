@@ -27,20 +27,44 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1  # make sure SITE_ID is set
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    # Django core apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'drf_yasg',
+    'django.contrib.sites',
+
+    # Rest framework and authentication
     'rest_framework',
+    #'rest_framework_swagger',
     'rest_framework.authtoken',
+    'allauth',
+    "allauth.account",
+    "allauth.socialaccount",
+    'dj_rest_auth',
+    "dj_rest_auth.registration",
+
+    # Your custom apps
     "weather_app",
+    "authentication.apps.AuthenticationConfig",
 ]
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Basic': {
+            'type': 'basic'
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

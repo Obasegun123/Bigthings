@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 """
 class WeatherList(APIView):
     
-    permission_classes = (IsAuthenticated,) 
+    #permission_classes = (IsAuthenticated,) 
     
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
