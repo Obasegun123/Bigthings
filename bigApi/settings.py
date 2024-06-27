@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'allauth',
     "allauth.account",
     "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     'dj_rest_auth',
     "dj_rest_auth.registration",
 
@@ -64,6 +65,24 @@ SWAGGER_SETTINGS = {
             'type': 'basic'
         }
     }
+}
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "APP": {
+            "client_id": "<your google client id>",  # replace me
+            "secret": "<your google secret>",        # replace me
+            "key": "",                               # leave empty
+        },
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+        "VERIFIED_EMAIL": True,
+    },
 }
 
 MIDDLEWARE = [
@@ -158,3 +177,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "<your email host>"                    # smtp-relay.sendinblue.com
+EMAIL_USE_TLS = False                               # False
+EMAIL_PORT = "<your email port>"                    # 587
+EMAIL_HOST_USER = "<your email user>"               # your email address
+EMAIL_HOST_PASSWORD = "<your email password>"       # your password
+DEFAULT_FROM_EMAIL = "<your default from email>"    # email ending with @sendinblue.com
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
+
+# <EMAIL_CONFIRM_REDIRECT_BASE_URL>/<key>
+EMAIL_CONFIRM_REDIRECT_BASE_URL = \
+    "http://localhost:3000/email/confirm/"
+
+# <PASSWORD_RESET_CONFIRM_REDIRECT_BASE_URL>/<uidb64>/<token>/
+PASSWORD_RESET_CONFIRM_REDIRECT_BASE_URL = \
+    "http://localhost:3000/password-reset/confirm/"
