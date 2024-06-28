@@ -14,3 +14,5 @@ For instance:
 redis-server --service-stop
 
 https://github.com/tporadowski/redis/blob/develop/Windows%20Service%20Documentation.md
+
+i will test the auth endpoint later and change it if need bee
