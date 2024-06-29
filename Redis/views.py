@@ -65,9 +65,5 @@ class MusicianViewSet(viewsets.ModelViewSet):
             cache.set(cache_key , serializer_class.data, timeout=60*60)
             return Response(serializer_class.data)
         
-class AlbumViewSet(viewsets.ModelViewSet):
-    serializer_class = AlbumSerializer
-    queryset = Album.objects.all()
-    serializer_class = MusicianSerializer
-    queryset = Musician.objects.all()
+        
    
