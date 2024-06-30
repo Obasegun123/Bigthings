@@ -79,6 +79,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'authentication.User'  # Replace with your custom model path (if applicable)
+AUTH_PERMISSION_MODEL = 'auth.Permission'  # Default permission model
+AUTH_GROUP_MODEL = 'auth.Group'  # Default group model
+
+# Override the related_name using AUTH_RELATED_USER_MODULE_OPTIONS (Not Recommended)
+AUTH_RELATED_USER_MODULE_OPTIONS = {
+    'auth.Permission': {
+        'user_set': 'authentication.user_set',  # Example related_name for permissions (your_app_name should point to the app using the custom User)
+    },
+    'auth.Group': {
+        'user_set': 'authentication.group_set',  # Example related_name for groups (your_app_name should point to the app using the custom User)
+    }
+}
+
 ROOT_URLCONF = 'bigApi.urls'
 
 TEMPLATES = [

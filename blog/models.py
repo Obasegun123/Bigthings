@@ -40,3 +40,15 @@ class Post(TimeStampedUUIDModel):
 
     def __str__(self) -> str:
         return self.title
+
+
+class AuditTrail(TimeStampedUUIDModel):
+    login_IP = models.GenericIPAddressField(null=True, blank=True)
+    action_datetime = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE) # keeps track of the user 
+    changed_object = models.CharField(max_length=40)
+    event_category = models.CharField(max_length=40)
+    user_agent_info = models.CharField(max_length=255)
+    is_deleted = models.BooleanField(default=False)
+    action = models.CharField(max_length=40)
+    change_summary = models.CharField(max_length=199)
