@@ -16,6 +16,8 @@ from django.urls import path
 from allauth.socialaccount.views import signup
 from authentication.views import GoogleLogin
 
+from authentication import views
+
 
 urlpatterns = [
     path("register/", RegisterView.as_view(), name="rest_register"),
@@ -38,5 +40,9 @@ urlpatterns = [
     
     path("signup/", signup, name="socialaccount_signup"),
     path("google/", GoogleLogin.as_view(), name="google_login"),
+    
+    path('auth/register/', views.RegisterAPI.as_view(), name="registration_api"),
+    path('auth/login/', views.LoginAPI.as_view(), name="login_api"),
+    path('auth/me/', views.UserAPI.as_view(), name="get_logged_in_user_api"),
 
 ]

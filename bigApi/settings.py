@@ -58,11 +58,13 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     'dj_rest_auth',
     "dj_rest_auth.registration",
+    "knox",
 
     # Your custom apps
     "weather_app",
     "authentication.apps.AuthenticationConfig",
     "Redis",
+    "blog",
 ]
 
 
@@ -142,6 +144,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        "knox.auth.TokenAuthentication",
         #'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',  # <-- And here
     ],
