@@ -61,9 +61,10 @@ class PostAPI(generics.ListCreateAPIView):
         )
         all_posts = Post.objects.all().order_by("-created_at")
         serializer = PostSerializer(all_posts, many=True)
-        audit_trail_signal.send(sender=request.user.__class__, request=request, 
-        user=request.user, model="Blog",event_category="Blog", method="CREATE")
+        # audit_trail_signal.send(sender=self.request.user.__class__, request=self.request,
+        #                         user=self.request.user, model="Blog", event_category="Blog", method="CREATE", summary="Create a new post")
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 
 class AuditTrailView(generics.ListAPIView):

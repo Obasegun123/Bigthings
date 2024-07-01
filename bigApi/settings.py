@@ -77,6 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'blog.middlewares.AuditTrailMiddleware'
 ]
 
 AUTH_USER_MODEL = 'authentication.User'  # Replace with your custom model path (if applicable)
